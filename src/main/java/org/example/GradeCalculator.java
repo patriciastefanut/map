@@ -8,7 +8,7 @@ public class GradeCalculator {
         }
         int num = 0;
         for (int grade: grades) {
-            if (grade < 40) num ++;
+            if (grade < 38) num ++;
         }
         return num;
     }
