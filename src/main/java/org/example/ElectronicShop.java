@@ -3,7 +3,10 @@ package org.example;
 public class ElectronicShop {
 
     //billigste Tastatur
-    public static int findCheapestKeyboard(int[] keyboards) {
+    public int findCheapestKeyboard(int[] keyboards) {
+        if (keyboards.length == 0) {
+            throw new ArrayIndexOutOfBoundsException("Array is empty!");
+        }
         int minPrice = Integer.MAX_VALUE;
         for (int price : keyboards) {
             if (price < minPrice) {
@@ -14,7 +17,10 @@ public class ElectronicShop {
     }
 
     //teuerste Gegenstand
-    public static int findMostExpensiveItem(int[] keyboards, int[] usbDrives) {
+    public int findMostExpensiveItem(int[] keyboards, int[] usbDrives) {
+        if (keyboards.length * usbDrives.length == 0) {
+            throw new ArrayIndexOutOfBoundsException("Array is empty!");
+        }
         int maxPrice = Integer.MIN_VALUE;
         for (int price : keyboards) {
             if (price > maxPrice) {
@@ -29,8 +35,12 @@ public class ElectronicShop {
         return maxPrice;
     }
 
+
     //teuerste USB-Laufwerk
-    public static int findMaxUsbDriveAffordable(int[] usbDrives, int budget) {
+    public int findMostAffordableUSBDrive(int[] usbDrives, int budget) {
+        if (usbDrives.length == 0) {
+            throw new ArrayIndexOutOfBoundsException("Array is empty!");
+        }
         int maxPrice = 0;
         for (int price : usbDrives) {
             if (price <= budget && price > maxPrice) {
@@ -41,16 +51,16 @@ public class ElectronicShop {
     }
 
     //ganzer Geldbetrag
-    public static int findTotalSpent(int[] keyboards, int[] usbDrives, int budget) {
+    public int findTotalSpent(int[] keyboards, int[] usbDrives, int budget) {
+        if (keyboards.length * usbDrives.length == 0) {
+            throw new ArrayIndexOutOfBoundsException("Array is empty!");
+        }
         int maxKeyboardPrice = findCheapestKeyboard(keyboards);
-        int maxUsbDrivePrice = findMaxUsbDriveAffordable(usbDrives, budget);
+        int maxUsbDrivePrice = findMostAffordableUSBDrive(usbDrives, budget);
 
         if (maxKeyboardPrice == Integer.MAX_VALUE || maxUsbDrivePrice == 0) {
             return -1;
         }
-
-        int totalSpent = maxKeyboardPrice + maxUsbDrivePrice;
-        return totalSpent;
+        return maxKeyboardPrice + maxUsbDrivePrice;
     }
-
 }

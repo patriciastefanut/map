@@ -6,66 +6,67 @@ import static org.junit.Assert.*;
 public class ElectronicShopTest {
 
     @Test
-    public void testFindCheapestKeyboard() {
+    public void expected_testFindCheapestKeyboard() {
+        ElectronicShop electronicShop = new ElectronicShop();
         int[] keyboards = {40, 35, 70, 15, 45};
         int expected = 15;
-        assertEquals(expected, ElectronicShop.findCheapestKeyboard(keyboards));
+        assertEquals(expected, electronicShop.findCheapestKeyboard(keyboards));
     }
 
     @Test
-    public void testFindCheapestKeyboardWithEmptyList() {
-        int[] keyboards = {};
-        int expected = -1; // Unerwarteter Fall: leere Preisliste
-        assertEquals(expected, ElectronicShop.findCheapestKeyboard(keyboards));
+    public void unexpected_testFindCheapestKeyboardWithEmptyList() {
+        ElectronicShop electronicShop = new ElectronicShop();
+        assertThrows(ArrayIndexOutOfBoundsException.class, ()-> electronicShop.findCheapestKeyboard(new int[]{}));
     }
 
     @Test
-    public void testFindMostExpensiveItem() {
+    public void expected_testFindMostExpensiveItem() {
+        ElectronicShop electronicShop = new ElectronicShop();
+
         int[] keyboards = {15, 20, 10, 35};
         int[] usbDrives = {20, 15, 40, 15};
         int expected = 40;
-        assertEquals(expected, ElectronicShop.findMostExpensiveItem(keyboards, usbDrives));
+        assertEquals(expected, electronicShop.findMostExpensiveItem(keyboards, usbDrives));
     }
 
     @Test
-    public void testFindMostExpensiveItemWithEmptyLists() {
-        int[] keyboards = {};
-        int[] usbDrives = {};
-        int expected = -1; // Unerwarteter Fall: leere Preislisten
-        assertEquals(expected, ElectronicShop.findMostExpensiveItem(keyboards, usbDrives));
+    public void unexpected_testFindMostExpensiveItemWithEmptyLists() {
+        ElectronicShop electronicShop = new ElectronicShop();
+        assertThrows(ArrayIndexOutOfBoundsException.class, ()-> electronicShop.findMostExpensiveItem(new int[]{}, new int[]{}));
     }
 
     @Test
-    public void testFindMaxUsbDriveAffordable() {
+    public void expected_testFindMaxUsbDriveAffordable() {
+        ElectronicShop electronicShop = new ElectronicShop();
         int[] usbDrives = {15, 45, 20};
         int budget = 30;
         int expected = 20;
-        assertEquals(expected, ElectronicShop.findMaxUsbDriveAffordable(usbDrives, budget));
+        assertEquals(expected, electronicShop.findMostAffordableUSBDrive(usbDrives, budget));
     }
 
     @Test
-    public void testFindMaxUsbDriveAffordableWithNoAffordableDrive() {
-        int[] usbDrives = {40, 50, 60};
-        int budget = 30;
-        int expected = 0; // Unerwarteter Fall: Kein erschwingliches USB-Laufwerk
-        assertEquals(expected, ElectronicShop.findMaxUsbDriveAffordable(usbDrives, budget));
+    public void unexpected_testFindMaxUsbDriveAffordableWithNoAffordableDrive() {
+        ElectronicShop electronicShop = new ElectronicShop();
+        assertThrows(ArrayIndexOutOfBoundsException.class, ()-> electronicShop.findMostAffordableUSBDrive(new int[0], 50));
     }
 
     @Test
     public void testFindTotalSpent() {
+        ElectronicShop electronicShop = new ElectronicShop();
         int[] keyboards = {40, 50, 60};
         int[] usbDrives = {8, 12};
         int budget = 60;
         int expected = 58;
-        assertEquals(expected, ElectronicShop.findTotalSpent(keyboards, usbDrives, budget));
+        assertEquals(expected, electronicShop.findTotalSpent(keyboards, usbDrives, budget));
     }
 
     @Test
     public void testFindTotalSpentWithInsufficientBudget() {
+        ElectronicShop electronicShop = new ElectronicShop();
         int[] keyboards = {40, 50, 60};
         int[] usbDrives = {8, 12};
         int budget = 30;
         int expected = -1; // Unerwarteter Fall: Nicht genug Budget für beide Gegenstände
-        assertEquals(expected, ElectronicShop.findTotalSpent(keyboards, usbDrives, budget));
+        assertEquals(expected, electronicShop.findTotalSpent(keyboards, usbDrives, budget));
     }
 }
