@@ -55,12 +55,17 @@ public class ElectronicShop {
         if (keyboards.length * usbDrives.length == 0) {
             throw new ArrayIndexOutOfBoundsException("Array is empty!");
         }
-        int maxKeyboardPrice = findCheapestKeyboard(keyboards);
-        int maxUsbDrivePrice = findMostAffordableUSBDrive(usbDrives, budget);
 
-        if (maxKeyboardPrice == Integer.MAX_VALUE || maxUsbDrivePrice == 0) {
-            return -1;
+        int maxTotal = -1, total;
+
+        for (int keyboard: keyboards) {
+            for (int usb : usbDrives) {
+                total = keyboard + usb;
+                if (budget >= total && maxTotal < total) {
+                    maxTotal = total;
+                }
+            }
         }
-        return maxKeyboardPrice + maxUsbDrivePrice;
+        return maxTotal;
     }
 }

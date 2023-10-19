@@ -51,7 +51,7 @@ public class ElectronicShopTest {
     }
 
     @Test
-    public void testFindTotalSpent() {
+    public void expected_testFindTotalSpent() {
         ElectronicShop electronicShop = new ElectronicShop();
         int[] keyboards = {40, 50, 60};
         int[] usbDrives = {8, 12};
@@ -61,12 +61,18 @@ public class ElectronicShopTest {
     }
 
     @Test
-    public void testFindTotalSpentWithInsufficientBudget() {
+    public void expected_testFindTotalSpentWithInsufficientBudget() {
         ElectronicShop electronicShop = new ElectronicShop();
         int[] keyboards = {40, 50, 60};
         int[] usbDrives = {8, 12};
         int budget = 30;
         int expected = -1; // Unerwarteter Fall: Nicht genug Budget für beide Gegenstände
         assertEquals(expected, electronicShop.findTotalSpent(keyboards, usbDrives, budget));
+    }
+
+    @Test
+    public void unexpected_testFindTotalSpent() {
+        ElectronicShop electronicShop = new ElectronicShop();
+        assertThrows(ArrayIndexOutOfBoundsException.class, ()->electronicShop.findTotalSpent(new int[0], new int[0], 60));
     }
 }
