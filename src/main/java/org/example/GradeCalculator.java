@@ -4,6 +4,9 @@ public class GradeCalculator {
 
 
     public int nrOfFailingGrades(int[] grades) {
+        if (grades.length == 0) {
+            throw new ArrayIndexOutOfBoundsException("Array is empty!");
+        }
         int num = 0;
         for (int grade: grades) {
             if (grade < 40) num ++;
@@ -12,6 +15,9 @@ public class GradeCalculator {
     }
 
     public int[] getFailingGrades(int[] grades) {
+        if (grades.length == 0) {
+            throw new ArrayIndexOutOfBoundsException("Array is empty!");
+        }
         int[] failingGrades = new int[nrOfFailingGrades(grades)];
         int index = 0;
         for (int grade : grades) {
@@ -25,7 +31,7 @@ public class GradeCalculator {
 
     public static double calculateAverage(int[] grades) {
         if (grades.length == 0) {
-            return 0.0;
+            throw new ArrayIndexOutOfBoundsException("Array is empty!");
         }
         int sum = 0;
         for (int grade : grades) {
@@ -35,6 +41,9 @@ public class GradeCalculator {
     }
 
     public static int[] roundGrades(int[] grades) {
+        if (grades.length == 0) {
+            throw new ArrayIndexOutOfBoundsException("Array is empty!");
+        }
         int[] roundedGrades = new int[grades.length];
         for (int i = 0; i < grades.length; i++) {
             int grade = grades[i];
@@ -53,6 +62,9 @@ public class GradeCalculator {
     }
 
     public static int getMaxRoundedGrade(int[] grades) {
+        if (grades.length == 0) {
+            throw new ArrayIndexOutOfBoundsException("Array is empty!");
+        }
         int maxRoundedGrade = Integer.MIN_VALUE;
         for (int grade : grades) {
             int roundedGrade = grade;
