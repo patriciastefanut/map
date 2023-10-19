@@ -1,13 +1,13 @@
 package org.example;
 
 import org.junit.Test;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.Assert.*;
 
 public class GradeCalculatorTest {
 
     @Test
-    public void testGetFailingGrades() {
+    public void expected_testGetFailingGrades() {
         GradeCalculator gradeCalculator = new GradeCalculator();
         int[] grades = {75, 42, 35, 90};
         int[] expected = {35};
@@ -19,35 +19,47 @@ public class GradeCalculatorTest {
     }
 
     @Test
+    public void unexpected_testGetFailingGrades() {
+        GradeCalculator gradeCalculator = new GradeCalculator();
+        assertThrows(ArrayIndexOutOfBoundsException.class, ()-> gradeCalculator.getFailingGrades(new int[]{}));
+    }
+
+    @Test
     public void testCalculateAverage() {
+        GradeCalculator gradeCalculator = new GradeCalculator();
         int[] grades = {85, 92, 78, 64};
         double expected = 79.75;
-        assertEquals(expected, GradeCalculator.calculateAverage(grades), 0.01);
+        assertEquals(expected, gradeCalculator.calculateAverage(grades), 0.01);
+    }
 
-        int[] grades2 = {};
-        double expected2 = 0.0;
-        assertEquals(expected2, GradeCalculator.calculateAverage(grades2), 0.01);
+    @Test
+    public void unexpected_testCalculatorAverage() {
+        GradeCalculator gradeCalculator = new GradeCalculator();
+        assertThrows(ArrayIndexOutOfBoundsException.class, ()-> gradeCalculator.calculateAverage(new int[]{}));
     }
 
     @Test
     public void testRoundGrades() {
+        GradeCalculator gradeCalculator = new GradeCalculator();
         int[] grades = {85, 92, 78, 64};
         int[] expected = {85, 92, 80, 65};
-        assertArrayEquals(expected, GradeCalculator.roundGrades(grades));
+        assertArrayEquals(expected, gradeCalculator.roundGrades(grades));
 
         int[] grades2 = {30, 35, 38, 39};
         int[] expected2 = {30, 35, 38, 39};
-        assertArrayEquals(expected2, GradeCalculator.roundGrades(grades2));
+        assertArrayEquals(expected2, gradeCalculator.roundGrades(grades2));
     }
 
     @Test
     public void testGetMaxRoundedGrade() {
+        GradeCalculator gradeCalculator = new GradeCalculator();
+
         int[] grades = {85, 92, 78, 64};
         int expected = 92;
-        assertEquals(expected, GradeCalculator.getMaxRoundedGrade(grades));
+        assertEquals(expected, gradeCalculator.getMaxRoundedGrade(grades));
 
         int[] grades2 = {30, 33, 38, 39};
         int expected2 = 39;
-        assertEquals(expected2, GradeCalculator.getMaxRoundedGrade(grades2));
+        assertEquals(expected2, gradeCalculator.getMaxRoundedGrade(grades2));
     }
 }

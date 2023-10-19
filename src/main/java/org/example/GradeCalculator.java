@@ -2,7 +2,6 @@ package org.example;
 
 public class GradeCalculator {
 
-
     public int nrOfFailingGrades(int[] grades) {
         if (grades.length == 0) {
             throw new ArrayIndexOutOfBoundsException("Array is empty!");
@@ -29,7 +28,7 @@ public class GradeCalculator {
         return failingGrades;
     }
 
-    public static double calculateAverage(int[] grades) {
+    public double calculateAverage(int[] grades) {
         if (grades.length == 0) {
             throw new ArrayIndexOutOfBoundsException("Array is empty!");
         }
@@ -40,7 +39,7 @@ public class GradeCalculator {
         return (double) sum / grades.length;
     }
 
-    public static int[] roundGrades(int[] grades) {
+    public int[] roundGrades(int[] grades) {
         if (grades.length == 0) {
             throw new ArrayIndexOutOfBoundsException("Array is empty!");
         }
@@ -61,7 +60,7 @@ public class GradeCalculator {
         return roundedGrades;
     }
 
-    public static int getMaxRoundedGrade(int[] grades) {
+    public int getMaxRoundedGrade(int[] grades) {
         if (grades.length == 0) {
             throw new ArrayIndexOutOfBoundsException("Array is empty!");
         }
@@ -80,5 +79,4 @@ public class GradeCalculator {
         }
         return maxRoundedGrade;
     }
-
 }
