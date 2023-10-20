@@ -3,7 +3,16 @@ package org.example;
 public class BigNumbersArray {
 
     //summe von 2 nr
-    public static int[] addLargeNumbers(int[] num1, int[] num2) {
+    public int[] addLargeNumbers(int[] num1, int[] num2) throws Exception {
+
+        if (num1.length == 0 || num2.length == 0) {
+            throw new Exception("Empty Array!");
+        }
+
+        if (num1.length != num2.length) {
+            throw new Exception("Array lengths do not match!");
+        }
+
         int n = num1.length;
         int carry = 0;
         int[] result = new int[n];
@@ -25,7 +34,16 @@ public class BigNumbersArray {
     }
 
     //dif von 2 nr
-    public static int[] subtractLargeNumbers(int[] num1, int[] num2) {
+    public int[] subtractLargeNumbers(int[] num1, int[] num2) throws Exception {
+
+        if (num1.length * num2.length == 0) {
+            throw new Exception("Empty Array!");
+        }
+
+        if (num1.length != num2.length) {
+            throw new Exception("Array lengths do not match!");
+        }
+
         int n = num1.length;
         int borrow = 0;
         int[] result = new int[n];
@@ -45,7 +63,11 @@ public class BigNumbersArray {
     }
 
     //multiplikation von 2 nr
-    public static int[] multiplyLargeNumberByDigit(int[] num, int digit) {
+    public int[] multiplyLargeNumberByDigit(int[] num, int digit) throws Exception {
+        if (num.length == 0) {
+            throw new Exception("Empty Array!");
+        }
+
         int n = num.length;
         int carry = 0;
         int[] result = new int[n];
@@ -67,7 +89,13 @@ public class BigNumbersArray {
     }
 
     //division
-    public static int[] divideLargeNumberByDigit(int[] num, int digit) {
+    public int[] divideLargeNumberByDigit(int[] num, int digit) throws Exception {
+        if (num.length == 0) {
+            throw new Exception("Empty Array!");
+        }
+        if (digit == 0) {
+            throw new Exception("Cannot divide by 0!");
+        }
         int n = num.length;
         int[] result = new int[n];
         int remainder = 0;
