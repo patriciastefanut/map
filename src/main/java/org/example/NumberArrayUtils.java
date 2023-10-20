@@ -2,7 +2,10 @@ package org.example;
 
 public class NumberArrayUtils {
     //maximale Zahl
-    public static int findMax(int[] numbers) {
+    public int findMax(int[] numbers) throws Exception {
+        if (numbers.length == 0) {
+            throw new Exception("Array is empty!");
+        }
         int max = numbers[0];
         for (int i = 1; i < numbers.length; i++) {
             if (numbers[i] > max) {
@@ -13,7 +16,10 @@ public class NumberArrayUtils {
     }
 
     //minimale Zahl
-    public static int findMin(int[] numbers) {
+    public int findMin(int[] numbers) throws Exception {
+        if (numbers.length == 0) {
+            throw new Exception("Array is empty!");
+        }
         int min = numbers[0];
         for (int i = 1; i < numbers.length; i++) {
             if (numbers[i] < min) {
@@ -24,7 +30,10 @@ public class NumberArrayUtils {
     }
 
     //maximale Summe von n-1 Zahlen
-    public static int findMaxSumOfNMinusOne(int[] numbers) {
+    public int findMaxSumOfNMinusOne(int[] numbers) throws Exception {
+        if (numbers.length == 0) {
+            throw new Exception("Array is empty!");
+        }
         int sum = 0;
         int min = Integer.MAX_VALUE;
 
@@ -39,7 +48,10 @@ public class NumberArrayUtils {
     }
 
     //minimale Summe von n-1 Zahlen
-    public static int findMinSumOfNMinusOne(int[] numbers) {
+    public int findMinSumOfNMinusOne(int[] numbers) throws Exception {
+        if (numbers.length == 0) {
+            throw new Exception("Array is empty!");
+        }
         int sum = 0;
         int max = Integer.MIN_VALUE;
 
