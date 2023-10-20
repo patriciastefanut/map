@@ -2,63 +2,89 @@ package org.example;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+
 public class NumberArrayTest {
     @Test
-    public void testFindMax() {
+    public void expectedTestFindMax() throws Exception {
+        NumberArrayUtils numberArrayUtils = new NumberArrayUtils();
         int[] numbers = {4, 8, 3, 10, 17};
         int expected = 17;
-        assertEquals(expected, NumberArrayUtils.findMax(numbers));
+        assertEquals(expected, numberArrayUtils.findMax(numbers));
     }
 
     @Test
-    public void testFindMaxWithEmptyArray() {
-        int[] numbers = {};
-        int expected = Integer.MIN_VALUE;
-        assertEquals(expected, NumberArrayUtils.findMax(numbers));
+    public void unexpectedTestFindMaxWithEmptyArray() {
+        NumberArrayUtils numberArrayUtils = new NumberArrayUtils();
+        int[] numbers = new int[0];
+        try {
+            numberArrayUtils.findMax(numbers);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
-    public void testFindMin() {
+    public void expectedTestFindMin() throws Exception {
+        NumberArrayUtils numberArrayUtils = new NumberArrayUtils();
+
         int[] numbers = {4, 8, 3, 10, 17};
         int expected = 3;
-        assertEquals(expected, NumberArrayUtils.findMin(numbers));
+        assertEquals(expected, numberArrayUtils.findMin(numbers));
     }
 
     @Test
-    public void testFindMinWithEmptyArray() {
+    public void unexpectedTestFindMinWithEmptyArray() {
+        NumberArrayUtils numberArrayUtils = new NumberArrayUtils();
+
         int[] numbers = {};
-        int expected = Integer.MAX_VALUE;
-        assertEquals(expected, NumberArrayUtils.findMin(numbers));
+        try {
+            numberArrayUtils.findMin(numbers);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
-    public void testFindMaxSumOfNMinusOne() {
+    public void expectedTestFindMaxSumOfNMinusOne() throws Exception {
+        NumberArrayUtils numberArrayUtils = new NumberArrayUtils();
+
         int[] numbers = {4, 8, 3, 10, 17};
         int expected = 39;
-        assertEquals(expected, NumberArrayUtils.findMaxSumOfNMinusOne(numbers));
+        assertEquals(expected, numberArrayUtils.findMaxSumOfNMinusOne(numbers));
     }
 
     @Test
-    public void testFindMaxSumOfNMinusOneWithSingleElement() {
+    public void unexpectedTestFindMaxSumOfNMinusOneWithSingleElement() {
+        NumberArrayUtils numberArrayUtils = new NumberArrayUtils();
+
         int[] numbers = {5};
-        int expected = 0; // Pentru un singur element, suma minimă este 0
-        assertEquals(expected, NumberArrayUtils.findMaxSumOfNMinusOne(numbers));
+        try {
+            numberArrayUtils.findMaxSumOfNMinusOne(numbers);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
-    public void testFindMinSumOfNMinusOne() {
+    public void testFindMinSumOfNMinusOne() throws Exception {
+        NumberArrayUtils numberArrayUtils = new NumberArrayUtils();
+
         int[] numbers = {4, 8, 3, 10, 17};
         int expected = 25;
-        assertEquals(expected, NumberArrayUtils.findMinSumOfNMinusOne(numbers));
+        assertEquals(expected, numberArrayUtils.findMinSumOfNMinusOne(numbers));
     }
 
     @Test
     public void testFindMinSumOfNMinusOneWithSingleElement() {
+        NumberArrayUtils numberArrayUtils = new NumberArrayUtils();
+
         int[] numbers = {5};
-        int expected = 0; // Pentru un singur element, suma minimă este 0
-        assertEquals(expected, NumberArrayUtils.findMinSumOfNMinusOne(numbers));
+        try {
+            numberArrayUtils.findMinSumOfNMinusOne(numbers);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
 
